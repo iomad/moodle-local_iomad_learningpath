@@ -47,7 +47,10 @@ function local_iomad_learningpath_pluginfile($course,
                                            $forcedownload) {
     global $USER, $DB, $CFG;
 
-    if ($context->contextlevel == CONTEXT_SYSTEM) {
+    $companyid = iomad::get_my_companyid($systemcontext);
+    $companycontext = \core\context\company::instance($companyid);
+
+    if ($context->contextlevel == $companycontext->contextlevel) {
 
         require_login();
         $itemid = (int)array_shift($args);
