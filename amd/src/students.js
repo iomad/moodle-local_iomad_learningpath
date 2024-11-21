@@ -23,7 +23,20 @@ define(['jquery', 'jqueryui', 'core/config', 'core/ajax', 'core/notification'], 
 
     return {
 
+        /**
+         * Function to add students to the selected learning path.
+         *
+         * @param {int} companyid The Comany ID
+         * @param {int} pathid The path ID
+         *
+         **/
         init: function(companyid, pathid) {
+            /**
+             * Function to filter the list of users.
+             *
+             * @param {array} users The list of users
+             *
+             **/
             function apply_filter(users) {
 
                 // Check if there are any students
@@ -53,6 +66,10 @@ define(['jquery', 'jqueryui', 'core/config', 'core/ajax', 'core/notification'], 
                 $('#prospectivelist').append(items.join(''));
             }
 
+            /**
+             * Function to get the list of students vi an ajax call.
+             *
+             **/
             function user_list() {
 
                 var filter = $('#userfilter').val();
@@ -85,6 +102,12 @@ define(['jquery', 'jqueryui', 'core/config', 'core/ajax', 'core/notification'], 
                 $(this).removeClass("text-primary");
             });
 
+            /**
+             * Function to add students to the selected learning path listing.
+             *
+             * @param {array} users The list of users.
+             *
+             **/
             function apply_pathusers(users) {
 
                 // Check if there are any users
@@ -104,6 +127,10 @@ define(['jquery', 'jqueryui', 'core/config', 'core/ajax', 'core/notification'], 
                 $('#pathuserlist').append(items.join(''));
             }
 
+            /**
+             * Function to get the list of users in the path via an ajax call.
+             *
+             **/
             function pathuser_list() {
 
                 // Ajax stuff to get list

@@ -26,6 +26,14 @@ define(['jquery', 'jqueryui', 'core/config', 'core/ajax', 'core/notification', '
 
         init: function(companyid, pathid) {
 
+            /**
+             * Function which filters the courses
+             * being displayed and renders the output
+             * via a template.
+             *
+             * @param {array} courses The list of courses which can be seen.
+             *
+             **/
             function apply_filter(courses) {
 
                 // Show/hide 'no courses' message.
@@ -51,6 +59,11 @@ define(['jquery', 'jqueryui', 'core/config', 'core/ajax', 'core/notification', '
                     .fail(notification.exception);
             }
 
+            /**
+             * Function which gets the list courses
+             * and displays them.
+             *
+             **/
             function course_list() {
 
                 var filter = $('#coursefilter').val();
@@ -90,6 +103,13 @@ define(['jquery', 'jqueryui', 'core/config', 'core/ajax', 'core/notification', '
                 $(this).removeClass("text-primary");
             });
 
+            /**
+             * Function which adds the course to the learning path.
+             *
+             * @param {node} pcl The path list item.
+             * @param {courses} courses The list of courses being added.
+             *
+             **/
             function apply_pathcourses(pcl, courses) {
 
                 // Show/hide 'no courses' message.
@@ -117,6 +137,10 @@ define(['jquery', 'jqueryui', 'core/config', 'core/ajax', 'core/notification', '
                     .fail(notification.exception);
             }
 
+            /**
+             * Function which lists the courses in the path.
+             *
+             **/
             function pathcourse_list() {
 
                 // Ajax stuff to get list
@@ -167,6 +191,11 @@ define(['jquery', 'jqueryui', 'core/config', 'core/ajax', 'core/notification', '
                 }]);
             });
 
+            /**
+             * Function which ensures the correct icons are being displayed to edit
+             * the courses in it.
+             *
+             **/
             function fix_icons() {
                 $("#prospectivelist .path-delete").removeClass('fa-trash path-delete').addClass('fa-plus path-add');
                 $(".pathcourselist .path-add").removeClass('fa-plus path-add').addClass('fa-trash path-delete');
