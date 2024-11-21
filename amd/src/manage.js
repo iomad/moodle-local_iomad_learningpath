@@ -23,6 +23,11 @@ define(['jquery', 'core/config', 'core/ajax', 'core/notification', 'core/str'], 
 
     return {
 
+        /**
+         * Function to manage actions which can be performed on the
+         * lists of courses.
+         *
+         **/
         init: function() {
 
             // Enable Bootstrap tooltips
@@ -31,7 +36,13 @@ define(['jquery', 'core/config', 'core/ajax', 'core/notification', 'core/str'], 
                 $('[data-toggle="tooltip"]').tooltip();
             });
 
-            // Update the eye icon
+            /**
+             * Function to add the correct eye icon to the course listing.
+             *
+             * @param {node} icon The icon identifier
+             * @param {int} state The binary state for the icon
+             *
+             **/
             function _redraw(icon, state) {
                 icon.removeClass('fa-eye fa-eye-slash');
                 if (state == 1) {
@@ -41,7 +52,10 @@ define(['jquery', 'core/config', 'core/ajax', 'core/notification', 'core/str'], 
                 }
             }
 
-            // Handle active/hidden
+            /**
+             * Function to handle hiding an making active courses.
+             *
+             **/
             $('.lp_active').click(function() {
                 var icon = $(this).find('i');
                 var id = $(this).data('id');
