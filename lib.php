@@ -77,7 +77,5 @@ function local_iomad_learningpath_pre_course_delete($course) {
     // Clear references from the iomad_learningpathcourse table.
     $DB->delete_records('iomad_learningpathcourse', array('course' => $course->id));
 
-    echo $OUTPUT->notification(get_string('removepath', 'local_iomad_learningpath'), 'notifysuccess');
-
     return true;
 }
