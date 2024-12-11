@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="local/iomad_learningpath/db" VERSION="20240904" COMMENT="XMLDB file for Moodle local/iomad_learningpath"
+<XMLDB PATH="local/iomad_learningpath/db" VERSION="20241211" COMMENT="XMLDB file for Moodle local/iomad_learningpath"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
@@ -7,7 +7,7 @@
     <TABLE NAME="iomad_learningpath" COMMENT="List of learning paths">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
-        <FIELD NAME="company" TYPE="int" LENGTH="6" NOTNULL="true" SEQUENCE="false" COMMENT="Company ID"/>
+        <FIELD NAME="company" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="Company ID"/>
         <FIELD NAME="name" TYPE="char" LENGTH="80" NOTNULL="true" SEQUENCE="false" COMMENT="Learning path name"/>
         <FIELD NAME="description" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="Learning path description"/>
         <FIELD NAME="active" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="Is the learning path available"/>
