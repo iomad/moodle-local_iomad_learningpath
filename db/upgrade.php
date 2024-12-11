@@ -122,5 +122,41 @@ function xmldb_local_iomad_learningpath_upgrade($oldversion) {
         upgrade_plugin_savepoint(true, 2024090400, 'local', 'iomad_learningpath');
     }
 
+    if ($oldversion < 2024121100){
+        // Define index ix_com (not unique) to be dropped form iomad_learningpath.
+        $table = new xmldb_table('iomad_learningpath');
+        
+        $index = new xmldb_index('ix_com', XMLDB_INDEX_NOTUNIQUE, ['company']);
+        // Conditionally launch drop index ix_com.
+        if ($dbman->index_exists($table, $index)) {
+            $dbman->drop_index($table, $index);
+        }
+        
+        $index = new xmldb_index('uix_comnam', XMLDB_INDEX_UNIQUE, ['company', 'name']);
+        // Conditionally launch drop index uix_comnam.
+        if ($dbman->index_exists($table, $index)) {
+            $dbman->drop_index($table, $index);
+        }
+            
+        $field = new xmldb_field('company', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null, 'id');
+        // Launch change of type for field company.
+        $dbman->change_field_type($table, $field);
+
+        $index = new xmldb_index('ix_com', XMLDB_INDEX_NOTUNIQUE, ['company']);
+        // Conditionally launch add index ix_com.
+        if (!$dbman->index_exists($table, $index)) {
+            $dbman->add_index($table, $index);
+        }
+
+        $index = new xmldb_index('uix_comnam', XMLDB_INDEX_UNIQUE, ['company', 'name']);
+        // Conditionally launch add index uix_comnam.
+        if (!$dbman->index_exists($table, $index)) {
+            $dbman->add_index($table, $index);
+        }
+
+        // Iomad_learningpath savepoint reached.
+        upgrade_plugin_savepoint(true, 2024121100, 'local', 'iomad_learningpath');
+    }
+    
     return $result;
 }
